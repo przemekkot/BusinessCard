@@ -23,10 +23,10 @@ class BaseContact:
 
     def create_contacts(self, type, how_many):
         if type == "private":
-            for i in how_many():
+            for i in range(how_many):
                 return print(person.contact_priv())
         elif type == "business":
-            for i in how_many():
+            for i in range(how_many):
                 return print(person.contact_job())
         else:
             exit(1)
@@ -57,10 +57,10 @@ class BusinessContact(BaseContact):
 
     def create_contacts(self, type, how_many):
         if type == "private":
-            for i in how_many():
+            for i in range(how_many):
                 return print(person.contact_priv())
         elif type == "business":
-            for i in how_many():
+            for i in range(how_many):
                 return print(person.contact_job())
         else:
             exit(1)
@@ -74,4 +74,5 @@ person = BusinessContact(first_name=fake.first_name(), last_name=fake.last_name(
 #print(person.contact_priv())
 #print(person.contact_job())
 
-print(create_contacts("private", 3))
+print(person.create_contacts("private", 3))
+print(person.create_contacts("business", 3))
