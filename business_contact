@@ -16,21 +16,7 @@ class BaseContact:
 
     def contact_priv(self):
         return f"Wybieram numer {self.phone_number} i dzwonię do {self.first_name} {self.last_name}"
-    
-    # variable
-        type = ("private", "business")
-        how_many = 0
 
-    def create_contacts(self, type, how_many):
-        if type == "private":
-            for i in range(how_many):
-                return print(person.contact_priv())
-        elif type == "business":
-            for i in range(how_many):
-                return print(person.contact_job())
-        else:
-            exit(1)
-    
     @property
     def label_length(self):
         return sum([len(self.first_name), len(self.last_name), 1])
@@ -50,26 +36,26 @@ class BusinessContact(BaseContact):
 
     def contact_job(self):
         return f"Wybieram numer {self.business_phone_number} i dzwonię do {self.first_name} {self.last_name}, stanowisko: {self.position} z firmy {self.company}"
-    
-    # variable
-        type = ("private", "business")
-        how_many = 0
 
-    def create_contacts(self, type, how_many):
-        if type == "private":
-            for i in range(how_many):
-                return print(person.contact_priv())
-        elif type == "business":
-            for i in range(how_many):
-                return print(person.contact_job())
-        else:
-            exit(1)
-    
     @property
     def label_length(self):
         return sum([len(self.first_name), len(self.last_name), 1])
+person = BusinessContact(first_name=fake.first_name(), last_name=fake.last_name(), phone_number=fake.phone_number(), email_address=fake.email(), company=fake.company(), position=fake.job(), business_phone_number=fake.phone_number())           
 
-person = BusinessContact(first_name=fake.first_name(), last_name=fake.last_name(), phone_number=fake.phone_number(), email_address=fake.email(), company=fake.company(), position=fake.job(), business_phone_number=fake.phone_number())              
+# variable
+type = ("private", "business")
+how_many = 3
+
+def create_contacts(type, how_many):
+    if type == "private":
+        for i in range(how_many):
+            return f"Wybieram numer {fake.phone_number()} i dzwonię do {fake.first_name()} {fake.last_name()}"
+    elif type == "business":
+        for i in range(how_many):
+            return f"Wybieram numer {fake.phone_number()} i dzwonię do {fake.first_name()} {fake.last_name()}, stanowisko: {fake.job()} z firmy {fake.company()}"
+    else:
+        exit(1)
+       
 #print(person)
 #print(person.contact_priv())
 #print(person.contact_job())
