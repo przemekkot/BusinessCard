@@ -46,26 +46,21 @@ person_priv = BaseContact(first_name=fake.first_name(), last_name=fake.last_name
 person_business = BusinessContact(first_name=fake.first_name(), last_name=fake.last_name(), phone_number=fake.phone_number(), email_address=fake.email(), company=fake.company(), position=fake.job(), business_phone_number=fake.phone_number())
 
 # variables
-type = ("private", "business")
-how_many = 3
+type_of_contact = ("private", "business")
+how_many = 0
 contact = ""
 list_of_contacts = []
 
-def create_contacts(type, how_many):
-    if type == "private":
-        for i in range(how_many):
-            #contact = f"{fake.first_name()}, {fake.last_name()}, {fake.phone_number()}, {fake.email()}"
-            list_of_contacts.append(person_priv)
-    elif type == "business":
-        for i in range(how_many):
-            #contact = f"{fake.first_name()}, {fake.last_name()}, {fake.phone_number()}, {fake.email()}, {fake.company()}, {fake.job()}"
-            list_of_contacts.append(person_business)
-    else:
-        exit(1)
+def create_contacts(type_of_contact, how_many):
+    for i in range(how_many):
+        if type_of_contact == "private":
+            contact = BaseContact(first_name=fake.first_name(), last_name=fake.last_name(), phone_number=fake.phone_number(), email_address=fake.email())
+            list_of_contacts.append(contact)
+        elif type_of_contact == "business":
+            contact = BusinessContact(first_name=fake.first_name(), last_name=fake.last_name(), phone_number=fake.phone_number(), email_address=fake.email(), company=fake.company(), position=fake.job(), business_phone_number=fake.phone_number())
+            list_of_contacts.append(contact)
+        else:
+            exit(1)
     return list_of_contacts   
 
-#print(person)
-#print(person.contact_priv())
-#print(person.contact_job())
-
-print(create_contacts("business", 3))
+print(create_contacts("private", 4))
